@@ -123,7 +123,6 @@ const Shop = () => {
         </Cart>
       </div>
       <div className="pagination">
-        <p>Current Page: {currentPage}</p>
         <button onClick={handlePrevPage}>Previous</button>
         {pages.map((page) => (
           <button
