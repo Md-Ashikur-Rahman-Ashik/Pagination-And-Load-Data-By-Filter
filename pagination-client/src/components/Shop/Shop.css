@@ -33,3 +33,7 @@
   gap: 10px;
   justify-content: center;
 }
+
+.pagination .selected {
+  background-color: orange;
+}

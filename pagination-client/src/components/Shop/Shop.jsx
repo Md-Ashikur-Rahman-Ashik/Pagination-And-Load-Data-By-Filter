@@ -12,6 +12,7 @@ import { Link, useLoaderData } from "react-router-dom";
 const Shop = () => {
   const [products, setProducts] = useState([]);
   const [cart, setCart] = useState([]);
+  const [currentPage, setCurrentPage] = useState(0);
   const [itemsPerPage, setItemsPerPage] = useState(10);
   const { count } = useLoaderData();
   //   console.log(count);
@@ -27,7 +28,8 @@ const Shop = () => {
   const pages = [...Array(numberOfPages).keys()];
 
   // Done 1: get the total number of products
-  //   TODO 2: Number of items per page will be dynamic
+  //   Done 2: Number of items per page will be dynamic
+  // TODO 3: Get the current page
 
   useEffect(() => {
     fetch("http://localhost:5000/products")
@@ -106,8 +108,15 @@ const Shop = () => {
         </Cart>
       </div>
       <div className="pagination">
+        <p>Current Page: {currentPage}</p>
         {pages.map((page) => (
-          <button key={page}>{page}</button>
+          <button
+            className={currentPage === page && "selected"}
+            onClick={() => setCurrentPage(page)}
+            key={page}
+          >
+            {page}
+          </button>
         ))}
         <select
           value={itemsPerPage}
